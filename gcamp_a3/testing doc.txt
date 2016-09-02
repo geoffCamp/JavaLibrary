@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Testing plan will involve testing the following aspects of the program:\
+\
+Command menu:\
+ - all options respond as expected\
+ \
+Add:\
+ - call number, title, year cannot be empty\
+ - publisher, organization, authors can be empty\
+ - year handles non numeric input and out of bounds input\
+ - author cannot have \'91%\'92 in name\
+ - prevent adding duplicate entry with same year and call number\
+ - adding to an already existing key in hash map\
+\
+Search: \
+ - will handle empty input\
+ - will return all entries when no search terms selected\
+ - will handle one, two, or none years chosen\
+ - correct number of books and journals are displayed\
+ - case sensitivity off\
+ - searching with multiple books and journals displays all which are appropriate in the correct  order\
+ - matches entries regardless of word ordering\
+ - must match all specified terms\
+ - search will return journals and books\
+ - when reference not contained in list\
+ - when reference at start of list\
+ - when reference at end of list\
+ - when reference in \'93middle\'94 of list\
+\
+File I/O\
+- writes additions to file\
+- reads entries from file and adds to ref list\
+- handles file path arguments\
+\
+Test Cases:\
+\
+Add\
+- for empty call number, year, and/or title\
+   input: \'93\'94\
+   output: "Title and call number must be specified."\
+- for non numeric year\
+   input: \'93hi\'94\
+   output: \'93Please enter a valid year.\'94\
+- for year out of bounds\
+   input: 999\
+    output: "Please enter a valid year."\
+\
+Search\
+- for title case sensitivity off\
+  input: \'93java programming\'94\
+  output: displayed book titled \'93Java Programming\'94\
+- for different word ordering\
+   input: \'93programming java\'94\
+   output: displayed book titled \'93Java Programming\'94\
+- Number of years specified\
+   input1: \'932000\'93\
+   output1: all books and journals published 2000 and later\
+   input2: 2000 and 2005\
+   output2: all books and journals published between 2000 and 2005 inclusive\
+\
+File I/O\
+ - writes additions\
+ input: (book entry)\
+ output: (book to string in output file)\
+- reads references from input file\
+result: ref list non empty after start-up}
